@@ -17,11 +17,20 @@ module.exports = function solveSudoku(matrix) {
     }
   }
   if (count==81) {
-    return matrix;
+    /*var finMatrix = [];
+    for (var i=0;i<9;i++) {
+      for (var j=0;j<9;j++) {
+        var finMatrix = finMatrix.concat(matrix[i][j])
+      }
+    }
+    //alert(finMatrix);
+    if (finMatrix.indexOf(0)<=0) { */
+    return matrix
+    }
   }
   //alert (count);
   }
-  }
+  
   
   function searchPossibleValues(arr, m, n) {
   let auxPossible = [1, 2, 3, 4, 5, 6, 7, 8, 9];
