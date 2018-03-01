@@ -7,6 +7,7 @@ module.exports = function solveSudoku(matrix) {
   for (let i = 0; i<9; i++) {
     for (let j = 0; j<9; j++) {
       count++;
+      //alert (count);
       if (matrix[i][j]==0) {
         //alert("wow");
         if (searchPossibleValues(matrix, i, j)>0) {
@@ -40,12 +41,13 @@ module.exports = function solveSudoku(matrix) {
   let horizontal=hor.concat();
   horizont_while:
   while (true) {
+    if (horizontal.length==0) break
   for (var k=0; k<horizontal.length;k++) {
       if (horizontal[k] == 0) {
         horizontal.splice(k,1);
         break
       }
-      if (k==horizontal.length-1)
+      if (horizontal.length==0 || k==horizontal.length-1)
       break horizont_while;
   }
   }
@@ -54,12 +56,13 @@ module.exports = function solveSudoku(matrix) {
   let vertical=vertic.concat();
   vertical_while:
   while (true) {
+    if (vertical.length==0) break
   for (var l=0; l<vertical.length;l++) {
       if (vertical[l] == 0) {
         vertical.splice(l,1);
         break
       }
-      if (l==vertical.length-1)
+      if (vertical.length==0 || l==vertical.length-1)
       break vertical_while;
   }
   }
@@ -70,12 +73,13 @@ module.exports = function solveSudoku(matrix) {
   let block=bl.concat();
   block_while:
   while (true) {
+    if (block.length==0) break
   for (var p=0; p<block.length;p++) {
       if (block[p] == 0) {
         block.splice(p,1);
         break
       }
-      if (p==block.length-1)
+      if (block.length==0 || p==block.length-1)
       break block_while;
   }
   }
@@ -86,17 +90,17 @@ module.exports = function solveSudoku(matrix) {
     var counter=0;
     for (var q=0; q<auxPossible.length;q++) {
       counter=0;
-      if (horizontal.indexOf(auxPossible[q])>=0) {
+      if (horizontal.length>0 && horizontal.indexOf(auxPossible[q])>=0) {
         auxPossible.splice(q,1);
         //alert (auxPossible);
         break
       }
-      if (vertical.indexOf(auxPossible[q])>=0) {
+      if (vertical.length>0 && vertical.indexOf(auxPossible[q])>=0) {
         auxPossible.splice(q,1);
         //alert (auxPossible);
         break
       }
-      if (block.indexOf(auxPossible[q])>=0) {
+      if (block.length>0 && block.indexOf(auxPossible[q])>=0) {
         auxPossible.splice(q,1);
        // alert (auxPossible);
         break
